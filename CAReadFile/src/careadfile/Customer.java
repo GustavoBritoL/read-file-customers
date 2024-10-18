@@ -5,7 +5,7 @@ https://github.com/GustavoBritoL/read-file-customers */
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
+package careadfile;
 /**
  *
  * @author gustavobrito22icloud.com
@@ -15,7 +15,7 @@ https://github.com/GustavoBritoL/read-file-customers */
 public class Customer {
     // Variables created to store data from the read file.
     private String firstName; // Variable created to store first name,
-    private String lastName; // Variable created to store last name,
+    private String secondName; // Variable created to store last name,
     private double purchaseAmount; // Variable created to store purchase amount,
     private int customerClass; // Variable created to store class of customer,
     private int lastPurchaseYear; // Variable created to store last purchse year.
@@ -32,7 +32,7 @@ public class Customer {
         // Statement to evaluate first name which must contain only letters.
         // "[a-zA-Z]+" will match any letter from a to z (lower case or uppercase).
         if (firstName.matches("[a-zA-Z]+")) {
-            this.firstName = firstName; // "This" instance/value that will be stored in the variable firstName.
+            this.firstName = firstName; // "This" instance/value that will be stored in the variable secondName.
         } else {
             // Error message thorwn in case name is incorrect.  
             throw new IllegalArgumentException("First name must contain only letters.");
@@ -40,15 +40,15 @@ public class Customer {
     }
 
     // Getter and Setter for last name.
-    public String getLastName() {
-        return lastName;
+    public String getsecondName() {
+        return secondName;
     }
     
-    public void setLastName(String lastName) {
+    public void setsecondName(String secondName) {
         // Statement to evaluate last name which can be letters and/or numbers.
         // "[a-zA-Z0-9]+" will match any letter from a to z (lower case or uppercase)and any digit from 0 to 9.
-        if (lastName.matches("[a-zA-Z0-9]+")) {
-            this.lastName = lastName; //"This" instance/value will bee stored in the variable lastName.
+        if (secondName.matches("[a-zA-Z0-9]+")) {
+            this.secondName = secondName; //"This" instance/value will bee stored in the variable secondName.
         } else {
             // Error message thrown in case name is incorrect.
             throw new IllegalArgumentException("Last name must contain only letters and/or numbers.");
@@ -61,7 +61,7 @@ public class Customer {
     }
 
     public void setPurchaseAmount(double purchaseAmount) {
-        // Statement to evaluate to true if purchase amount is greater than 0
+        // Statement to evaluate to true if purchase amount is greater than 0.
         if (purchaseAmount > 0) {
             this.purchaseAmount = purchaseAmount;//"This" instance/value will be stored in variable purchaseAmount.
         } else {
@@ -80,8 +80,8 @@ public class Customer {
         if (customerClass >= 1 && customerClass <= 3) {
             this.customerClass = customerClass; //"This" instance/value will be stored in variable customerClass.
         } else {
-            // Error message thrown in case the value is not less than 1 or greater than 3.
-            throw new IllegalArgumentException("Customer class must be between 1 and 3.");
+            // Error message thrown in case the value is not less than 1 or greater than 3 and display customer name.
+            throw new IllegalArgumentException("Customer class must be between 1 and 3. Customer: " + firstName + " " + secondName +".");
         }
     }
 
@@ -100,10 +100,11 @@ public class Customer {
         }
     }
 
-    // Method for displaying customer information
+    /* Method for displaying customer information until we calculate the discount for each one and then 
+    we will display only FirstName, lastName and the discount */ 
     public void displayCustomerInfo() {
         System.out.println("First Name: " + firstName);
-        System.out.println("Last Name: " + lastName);
+        System.out.println("Second Name: " + secondName);
         System.out.println("Purchase Amount: $" + purchaseAmount);
         System.out.println("Customer Class: " + customerClass);
         System.out.println("Last Purchase Year: " + lastPurchaseYear);
