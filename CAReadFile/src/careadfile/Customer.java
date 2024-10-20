@@ -99,15 +99,52 @@ public class Customer {
             throw new IllegalArgumentException("Last purchase year must be a valid year.");
         }
     }
+    
+     // Method to calculate discount.
+    public double calculateDiscount() {
+        // variable double to store discount calculated.
+        double discount = 0.00;
 
-    /* Method for displaying customer information until we calculate the discount for each one and then 
-    we will display only FirstName, lastName and the discount */ 
+        // if statement to check if custormer class is equal to 1. 
+        if (customerClass == 1) {
+            if (lastPurchaseYear == 2024) { // if statement to check last year of purchase is equal to 2024. 
+                discount = purchaseAmount * 0.30; // Calculation for 30% of Discount.
+              // else if statement to check if last year of purchase is less than 2024 and greater than or equal to 2019.
+            } else if (lastPurchaseYear < 2024 && lastPurchaseYear >= 2019) { 
+                discount = purchaseAmount * 0.20; // Calculation for 20% of Discount.
+              // else if statement to check if last year of purchase is less than 2019.  
+            } else if (lastPurchaseYear < 2019) {
+                discount = purchaseAmount * 0.10; // Calculation for 10% of Discount.
+            }
+        } else if (customerClass == 2) { // else if statement to check if custormer class is equal to 2. 
+            if (lastPurchaseYear == 2024) {
+                discount = purchaseAmount * 0.15; // Calculation for 15% of Discount.
+            } else if (lastPurchaseYear < 2024 && lastPurchaseYear >= 2019) {
+                discount = purchaseAmount * 0.13; // Calculation for 13% of Discount.
+            } else if (lastPurchaseYear <= 2019) {
+                discount = purchaseAmount * 0.05; // Calculation for 5% of Discount.
+            }
+        } else if (customerClass == 3) { // else if statement to check if custormer class is equal to 3.
+            if (lastPurchaseYear == 2024) {
+                discount = purchaseAmount * 0.03; // Calculation for 3% of Discount.
+            } // 0% of discount for purchases before 2024.
+        }
+        
+        return discount;
+    }
+
+
+    // Method for displaying customer informations and a aplly discount for each one of them.
     public void displayCustomerInfo() {
         System.out.println("First Name: " + firstName);
         System.out.println("Second Name: " + secondName);
         System.out.println("Purchase Amount: $" + purchaseAmount);
         System.out.println("Customer Class: " + customerClass);
-        System.out.println("Last Purchase Year: " + lastPurchaseYear);
+        System.out.println("Last Purchase Year: " + lastPurchaseYear); 
+        double discount = calculateDiscount(); // Calling calculationDiscount method and storing value in double discount variable.
+        double finalAmount = purchaseAmount - discount; // Applying discount for each customer. 
+        System.out.printf("Discount: $%.2f%n", discount); 
+        System.out.printf("Final Amount after Discount: $%.2f%n", finalAmount);
         System.out.println("---------------------------");
     }
 }

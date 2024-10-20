@@ -66,8 +66,7 @@ public class CAReadFile {
                     line = br.readLine();
                     int lastPurchaseYear = Integer.parseInt(line);
 
-                    // Cria o objeto Customer e define os atributos usando setters
-
+                    // Creates the Customer object and sets the attributes using setters.
                     Customer customer = new Customer();
                     customer.setFirstName(firstName);
                     customer.setsecondName(secondName);
@@ -75,23 +74,25 @@ public class CAReadFile {
                     customer.setCustomerClass(customerClass);
                     customer.setLastPurchaseYear(lastPurchaseYear);
 
-                    // Adiciona o cliente à lista
+                    // Add the customer to the Arraylist.
                     customers.add(customer);
                    
-
+                // Catch will handle exceptions.
                 } catch (Exception e) {
                     System.out.println("Error reading customer data: " + e.getMessage());
                 }
            
           }
-       // Catch will handle exceptions.
+      // Catch will handle exceptions.
       } catch (IOException e) {
           // printStackTrace will print the IO exceptions if occur.
           e.printStackTrace();
       }
       
-        // For Loop to display information for all valid customers.
+        // For Loop to go through each element and display information for all valid customers.
         for (Customer customer : customers) {
+            /* calling method displayCustomerInfo() from Customer Class on each element of the 
+            customers ArrayList using parameter customer. */
             customer.displayCustomerInfo();
         }
     }
